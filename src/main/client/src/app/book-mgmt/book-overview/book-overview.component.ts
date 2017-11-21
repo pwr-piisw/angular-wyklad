@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {Book, BookService} from "../book.service";
+import {Component, OnInit} from '@angular/core';
+import {BookService} from '../book.service';
+import {Book} from '../book.dto';
 
 @Component({
   selector: 'app-book-overview',
@@ -14,7 +15,7 @@ export class BookOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.findAll().subscribe(
-        books => this.currentBooks = books
+      books => this.currentBooks = books
     );
   }
 

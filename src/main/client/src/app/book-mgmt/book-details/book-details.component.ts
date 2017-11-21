@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm, AbstractControl} from '@angular/forms';
 import {ActivatedRoute, Router, Params} from '@angular/router';
-import {Book, BookService} from '../book.service';
+import {BookService} from '../book.service';
+import {Book} from '../book.dto';
 
 @Component({
   selector: 'app-book-details',
@@ -15,25 +16,23 @@ export class BookDetailsComponent implements OnInit {
 
   submitted: boolean;
 
-  private static createErrorMessage(errorObject: {[key: string]: any}): string {
+  private static createErrorMessage(errorObject: { [key: string]: any }): string {
     if (errorObject) {
-      for (let errorCode in errorObject) {
-        if (errorObject.hasOwnProperty(errorCode)) {
-          switch (errorCode) {
-            case 'required':
-              return 'Please provide a value';
-            case 'maxlength':
-              return 'The value is too long';
-            default:
-              return 'The value is wrong';
-          }
+      for (const errorCode of Object.keys(errorObject)) {
+        switch (errorCode) {
+          case 'required':
+            return 'Please provide a value';
+          case 'maxlength':
+            return 'The value is too long';
+          default:
+            return 'The value is wrong';
         }
       }
     }
   };
 
   constructor(private bookService: BookService, private route: ActivatedRoute, private router: Router) {
-    this.currentBook = new Book();
+    this.currentBook = {title: '', author: ''};
     this.submitted = false;
   }
 
@@ -60,8 +59,8 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       if (params['bookId']) {
-        let bookId: number = +params['bookId'];
-        let foundBook: Book = this.bookService.findOne(bookId);
+        const bookId: number = +params['bookId'];
+        const foundBook: Book = this.bookService.findOne(bookId);
         if (foundBook) {
           this.currentBook = foundBook;
         } else {
