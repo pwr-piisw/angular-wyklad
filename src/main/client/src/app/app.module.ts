@@ -9,6 +9,8 @@ import {RouterModule} from '@angular/router';
 import {APP_ROUTES} from './app.routing';
 import {BookService} from './book-mgmt/book.service';
 import {BookMgmtModule} from './book-mgmt/book-mgmt.module';
+import {UserMgmtModule} from './user-mgmt/user-mgmt.module';
+import {LibraryMgmtModule} from './library-mgmt/library-mgmt.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {BookMgmtModule} from './book-mgmt/book-mgmt.module';
     HttpModule,
     RouterModule.forRoot(APP_ROUTES),
     GeneralModule,
-    BookMgmtModule
+    BookMgmtModule,
+    UserMgmtModule,
+    LibraryMgmtModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
