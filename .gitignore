@@ -44,6 +44,8 @@ Thumbs.db
 .idea/libraries
 .idea/sonarlint
 .idea/workspace.xml
+.idea/modules.xml
+.idea/compiler.xml
 
 ### NetBeans ###
 nbproject/private/
