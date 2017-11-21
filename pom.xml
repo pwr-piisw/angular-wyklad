@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.capgemini</groupId>
-    <artifactId>ng-boot-project-seed</artifactId>
+    <artifactId>piisw-angular</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ng-boot-project-seed</name>
+    <name>piisw-angular</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
