@@ -40,7 +40,7 @@ export class BookDetailsComponent implements OnInit {
     this.submitted = true;
     if (this.currentForm && this.currentForm.form && this.currentForm.form.valid) {
       this.bookService.save(this.currentBook);
-      this.router.navigate(['/app/books']);
+      this.router.navigate(['/books']);
     }
   }
 
@@ -64,7 +64,7 @@ export class BookDetailsComponent implements OnInit {
         if (foundBook) {
           this.currentBook = foundBook;
         } else {
-          this.router.navigate(['/app/book']);
+          this.router.navigate(['/book']);
         }
       }
     });

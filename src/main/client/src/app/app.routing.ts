@@ -5,29 +5,24 @@ import {UserListComponent} from './user-mgmt/user-list/user-list.component';
 
 export const APP_ROUTES: Routes = [
   {
-    path: 'app',
-    children: [
-      {
-        path: 'books',
-        component: BookOverviewComponent
-      },
-      {
-        path: 'book',
-        component: BookDetailsComponent
-      },
-      {
-        path: 'book/:bookId',
-        component: BookDetailsComponent
-      },
-      {
-        path: 'users',
-        component: UserListComponent
-      }
-    ]
+    path: 'books',
+    component: BookOverviewComponent
+  },
+  {
+    path: 'book',
+    component: BookDetailsComponent
+  },
+  {
+    path: 'book/:bookId',
+    component: BookDetailsComponent
+  },
+  {
+    path: 'users',
+    component: UserListComponent
   },
   {
     path: '',
-    redirectTo: '/app/books',
+    redirectTo: '/books',
     pathMatch: 'full'
   }
 ];
