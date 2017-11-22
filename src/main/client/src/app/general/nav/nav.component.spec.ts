@@ -32,8 +32,9 @@ describe('NavComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     const linkElements = compiled.querySelectorAll('ul li');
-    expect(linkElements.length).toBe(2);
+    expect(linkElements.length).toBe(3);
     expect(linkElements[0].querySelector('a').textContent).toContain('Book Overview');
     expect(linkElements[1].querySelector('a').textContent).toContain('New Book');
+    expect(linkElements[2].querySelector('a').textContent).toContain('User Management'); 
   }));
 });
