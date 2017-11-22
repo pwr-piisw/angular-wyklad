@@ -1,3 +1,16 @@
-<p>
-  user-list works! really great
-</p>
+<section class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
