@@ -4,12 +4,14 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>&nbsp;</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
+      <td><a [routerLink]="['/users', user.id]">Details</a></td>
     </tr>
     </tbody>
   </table>

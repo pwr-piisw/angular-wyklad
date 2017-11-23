@@ -1,0 +1,27 @@
+<section class="container">
+  <form #bookForm="ngForm" novalidate>
+    <div class="form-group row">
+      <label for="name" class="col-lg-1 col-form-label">Name:</label>
+      <div class="col-lg-4">
+        <input id="name" name="titleField" type="text" value="{{currentUser.name}}"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-lg-1 col-form-label">Email:</label>
+      <div class="col-lg-4">
+        <input id="email" name="authorField" type="text" value="{{currentUser.email}}"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-4">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</section>
