@@ -3,7 +3,7 @@
     <div class="form-group row">
       <label for="name" class="col-lg-1 col-form-label">Name:</label>
       <div class="col-lg-4">
-        <input id="name" name="titleField" type="text" [value]="currentUser.name" (input)="nameChanged($event.target.value)"
+        <input id="name" name="titleField" type="text" [ngModel]="currentUser.name" (ngModelChange)="currentUser.name = $event"
                class="form-control">
       </div>
       <div class="col-lg-7">{{currentUser.name}}</div>

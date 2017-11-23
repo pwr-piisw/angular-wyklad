@@ -16,9 +16,4 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  nameChanged(value: string) {
-    console.log(value);
-    this.currentUser.name = value;
-  }
 }
