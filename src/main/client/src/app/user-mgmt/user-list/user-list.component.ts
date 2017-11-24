@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../user.dto';
 import {max} from 'rxjs/operator/max';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,22 +14,18 @@ export class UserListComponent implements OnInit {
 
   selectedUser: User;
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.users = [
-      {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
-      {id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
-      {id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
-    ];
+    this.reloadUsers();
   }
 
   selectUser(id: number) {
     if (this.selectedUser && this.selectedUser.id === id) {
       this.selectedUser = null;
     } else {
-      const userFound = this.users.find((user: User) => user.id === id);
+      const userFound = this.userService.findUser(id);
       if (userFound) {
         this.selectedUser = Object.assign({}, userFound);
       } else {
@@ -38,19 +35,16 @@ export class UserListComponent implements OnInit {
   }
 
   save(user: User) {
-    const userFound = this.users.find((elem: User) => elem.id === user.id);
-    if (userFound) {
-      Object.assign(userFound, user);
-    } else {
-      this.users.push(Object.assign({}, user));
-    }
+    this.userService.saveUser(user);
+    this.reloadUsers();
   }
 
   createNew() {
-    const maxId = this.users
-      .map((elem: User) => elem.id)
-      .reduce((prev, curr) => prev > curr ? prev : curr, 0);
-    this.selectedUser = {id: maxId + 1, name: '', email: ''};
+    this.selectedUser = {id: this.userService.getNextId(), name: '', email: ''};
+  }
+
+  private reloadUsers() {
+    this.users = this.userService.getAllUsers();
   }
 
 }

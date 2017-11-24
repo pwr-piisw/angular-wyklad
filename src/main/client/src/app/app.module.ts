@@ -11,6 +11,7 @@ import {BookService} from './book-mgmt/book.service';
 import {BookMgmtModule} from './book-mgmt/book-mgmt.module';
 import {UserMgmtModule} from './user-mgmt/user-mgmt.module';
 import {LibraryMgmtModule} from './library-mgmt/library-mgmt.module';
+import {UserService} from './user-mgmt/user.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {LibraryMgmtModule} from './library-mgmt/library-mgmt.module';
     UserMgmtModule,
     LibraryMgmtModule
   ],
-  providers: [BookService],
+  providers: [BookService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

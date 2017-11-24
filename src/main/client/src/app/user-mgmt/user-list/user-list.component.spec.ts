@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {UserDetailsComponent} from '../user-details/user-details.component';
 import {FormsModule} from '@angular/forms';
+import {UserService} from '../user.service';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -13,7 +14,8 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UserListComponent, UserDetailsComponent ],
-      imports: [ RouterTestingModule, FormsModule ]
+      imports: [ RouterTestingModule, FormsModule ],
+      providers: [ UserService ]
     })
     .compileComponents();
   }));
