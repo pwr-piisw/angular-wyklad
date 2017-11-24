@@ -1,21 +1,19 @@
 <section class="container">
-  <form #bookForm="ngForm" novalidate>
+  <form #bookForm="ngForm" novalidate *ngIf="value">
     <div class="form-group row">
       <label for="name" class="col-lg-1 col-form-label">Name:</label>
       <div class="col-lg-4">
-        <input id="name" name="titleField" type="text" [(ngModel)]="currentUser.name"
+        <input id="name" name="titleField" type="text" [(ngModel)]="value.name"
                class="form-control">
       </div>
-      <div class="col-lg-7">{{currentUser.name}}</div>
     </div>
 
     <div class="form-group row">
       <label for="email" class="col-lg-1 col-form-label">Email:</label>
       <div class="col-lg-4">
-        <input id="email" name="authorField" type="text" [(ngModel)]="currentUser.email"
+        <input id="email" name="authorField" type="text" [(ngModel)]="value.email"
                class="form-control">
       </div>
-      <div class="col-lg-7">{{currentUser.email}}</div>
     </div>
 
     <div class="row">
@@ -26,4 +24,5 @@
       </div>
     </div>
   </form>
+  <div *ngIf="!value"><p>No user selected</p></div>
 </section>

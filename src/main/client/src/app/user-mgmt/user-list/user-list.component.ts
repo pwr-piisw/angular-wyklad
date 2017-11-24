@@ -10,6 +10,8 @@ export class UserListComponent implements OnInit {
 
   users: User[] = [];
 
+  selectedUser: User;
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +20,7 @@ export class UserListComponent implements OnInit {
       { id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
       { id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
     ];
+    this.selectedUser = Object.assign({}, this.users[0]);
   }
 
 }

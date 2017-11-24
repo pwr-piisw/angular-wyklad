@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../user.dto';
 
 @Component({
@@ -8,10 +8,9 @@ import {User} from '../user.dto';
 })
 export class UserDetailsComponent implements OnInit {
 
-  currentUser: User;
+  @Input() value: User;
 
   constructor() {
-    this.currentUser = {name: 'Some name', email: 'some@email.com'};
   }
 
   ngOnInit() {
