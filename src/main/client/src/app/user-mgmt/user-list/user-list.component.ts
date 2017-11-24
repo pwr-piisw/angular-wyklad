@@ -21,7 +21,6 @@ export class UserListComponent implements OnInit {
       {id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
       {id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
     ];
-    this.selectUser(1);
   }
 
   selectUser(id: number) {
@@ -34,6 +33,15 @@ export class UserListComponent implements OnInit {
       } else {
         this.selectedUser = null;
       }
+    }
+  }
+
+  save(user: User) {
+    const userFound = this.users.find((elem: User) => elem.id === user.id);
+    if (userFound) {
+      Object.assign(userFound, user);
+    } else {
+      this.users.push(Object.assign({}, user));
     }
   }
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../user.dto';
 
 @Component({
@@ -10,9 +10,15 @@ export class UserDetailsComponent implements OnInit {
 
   @Input() value: User;
 
+  @Output() onSave = new EventEmitter<User>();
+
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  saveClicked() {
+    this.onSave.emit(this.value);
   }
 }

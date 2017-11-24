@@ -17,7 +17,7 @@
       </table>
     </div>
     <div class="col-lg-6">
-      <app-user-details [value]="selectedUser"></app-user-details>
+      <app-user-details [value]="selectedUser" (onSave)="save($event)"></app-user-details>
     </div>
   </div>
 </section>
