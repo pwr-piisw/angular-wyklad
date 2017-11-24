@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../user.dto';
 
 @Component({
@@ -12,15 +12,25 @@ export class UserListComponent implements OnInit {
 
   selectedUser: User;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.users = [
-      { id: 1, name: 'John Doe', email: 'john.doe@email.com'},
-      { id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
-      { id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
+      {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
+      {id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
+      {id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
     ];
-    this.selectedUser = Object.assign({}, this.users[0]);
+    this.selectUser(1);
+  }
+
+  selectUser(id: number) {
+    const userFound = this.users.find((user: User) => user.id === id);
+    if (userFound) {
+      this.selectedUser = Object.assign({}, userFound);
+    } else {
+      this.selectedUser = null;
+    }
   }
 
 }
