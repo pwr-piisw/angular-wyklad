@@ -16,8 +16,9 @@
         </tbody>
       </table>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 user-editor">
       <app-user-details [value]="selectedUser" (onSave)="save($event)"></app-user-details>
+      <div *ngIf="!selectedUser"><a [routerLink]="" (click)="createNew()">Create new user</a></div>
     </div>
   </div>
 </section>

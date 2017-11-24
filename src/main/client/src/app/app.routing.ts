@@ -22,10 +22,6 @@ export const APP_ROUTES: Routes = [
     component: UserListComponent
   },
   {
-    path: 'users/:userId',
-    component: UserDetailsComponent
-  },
-  {
     path: '',
     redirectTo: '/books',
     pathMatch: 'full'

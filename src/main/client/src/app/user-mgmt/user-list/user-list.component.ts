@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../user.dto';
+import {max} from 'rxjs/operator/max';
 
 @Component({
   selector: 'app-user-list',
@@ -43,6 +44,13 @@ export class UserListComponent implements OnInit {
     } else {
       this.users.push(Object.assign({}, user));
     }
+  }
+
+  createNew() {
+    const maxId = this.users
+      .map((elem: User) => elem.id)
+      .reduce((prev, curr) => prev > curr ? prev : curr, 0);
+    this.selectedUser = {id: maxId + 1, name: '', email: ''};
   }
 
 }
