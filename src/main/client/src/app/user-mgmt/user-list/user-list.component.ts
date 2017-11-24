@@ -25,26 +25,25 @@ export class UserListComponent implements OnInit {
     if (this.selectedUser && this.selectedUser.id === id) {
       this.selectedUser = null;
     } else {
-      const userFound = this.userService.findUser(id);
-      if (userFound) {
-        this.selectedUser = Object.assign({}, userFound);
-      } else {
-        this.selectedUser = null;
-      }
+      this.userService.findUser(id)
+        .subscribe(
+          (user: User) => this.selectedUser = user,
+          error2 => this.selectedUser = null);
     }
   }
 
   save(user: User) {
-    this.userService.saveUser(user);
-    this.reloadUsers();
+    this.userService.saveUser(user)
+      .subscribe(response => this.reloadUsers());
   }
 
   createNew() {
-    this.selectedUser = {id: this.userService.getNextId(), name: '', email: ''};
+    this.selectedUser = {name: '', email: ''};
   }
 
   private reloadUsers() {
-    this.users = this.userService.getAllUsers();
+    this.userService.getAllUsers()
+      .subscribe((users: User[]) => this.users = users);
   }
 
 }

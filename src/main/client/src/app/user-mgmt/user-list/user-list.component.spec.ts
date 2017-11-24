@@ -1,11 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserListComponent } from './user-list.component';
+import {UserListComponent} from './user-list.component';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {UserDetailsComponent} from '../user-details/user-details.component';
 import {FormsModule} from '@angular/forms';
 import {UserService} from '../user.service';
+import {HttpModule} from '@angular/http';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -13,11 +14,11 @@ describe('UserListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListComponent, UserDetailsComponent ],
-      imports: [ RouterTestingModule, FormsModule ],
-      providers: [ UserService ]
+      declarations: [UserListComponent, UserDetailsComponent],
+      imports: [RouterTestingModule, FormsModule, HttpModule],
+      providers: [UserService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

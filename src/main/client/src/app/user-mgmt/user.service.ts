@@ -1,39 +1,25 @@
 import {Injectable} from '@angular/core';
 import {User} from './user.dto';
+import {Http} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
 
-  users: User[] = [];
-
-  constructor() {
-    this.users = [
-      {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
-      {id: 2, name: 'Max Rockatansky', email: 'mad.max@email.com'},
-      {id: 3, name: 'Chuck Peddle', email: 'chuck@mos.com'}
-    ];
+  constructor(private http: Http) {
   }
 
-  getAllUsers() {
-    return this.users;
+  getAllUsers(): Observable<Array<User>> {
+    return this.http.get('services/rest/users')
+      .map(res =>  res.json());
+  }
+
+  findUser(id: number): Observable<User> {
+    return this.http.get(`services/rest/users/${id}`)
+      .map(res => res.json());
   }
 
   saveUser(user: User) {
-    const found = this.findUser(user.id);
-    if (found) {
-      Object.assign(found, user);
-    } else {
-      this.users.push(user);
-    }
-  }
-
-  findUser(id: number) {
-    return this.users.find((user: User) => user.id === id);
-  }
-
-  getNextId() {
-    return this.users
-      .map((elem: User) => elem.id)
-      .reduce((prev, curr) => prev > curr ? prev : curr, 0) + 1;
+    return this.http.post('services/rest/users', user);
   }
 }
