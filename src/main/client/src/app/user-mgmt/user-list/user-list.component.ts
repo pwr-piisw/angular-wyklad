@@ -25,11 +25,15 @@ export class UserListComponent implements OnInit {
   }
 
   selectUser(id: number) {
-    const userFound = this.users.find((user: User) => user.id === id);
-    if (userFound) {
-      this.selectedUser = Object.assign({}, userFound);
-    } else {
+    if (this.selectedUser && this.selectedUser.id === id) {
       this.selectedUser = null;
+    } else {
+      const userFound = this.users.find((user: User) => user.id === id);
+      if (userFound) {
+        this.selectedUser = Object.assign({}, userFound);
+      } else {
+        this.selectedUser = null;
+      }
     }
   }
 

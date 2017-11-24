@@ -6,14 +6,12 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users" [class.row-selected]="selectedUser && selectedUser.id === user.id" (click)="selectUser(user.id)">
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
-          <td><a [routerLink]="" (click)="selectUser(user.id)" href="">Details</a></td>
         </tr>
         </tbody>
       </table>
